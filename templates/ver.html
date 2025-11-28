@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Catequizados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+        .table-container {
+            background-color: #fff;
+            padding: 25px 35px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h1>Catequizados Registrados</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Parroquia Bautismo</th>
+                    <th>Horario</th>
+                    <th>ID Nivel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in catequizados %}
+                <tr>
+                    <td>{{ c.Id_Catequizado }}</td>
+                    <td>{{ c.Nombre }}</td>
+                    <td>{{ c.Parroquia_Bautismo }}</td>
+                    <td>{{ c.Horario }}</td>
+                    <td>{{ c.Id_Nivel }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

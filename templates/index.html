@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Catequizado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 25px 35px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registro de Catequizado</h1>
+        <form method="POST" action="/registrar">
+            <label for="id_nivel">Nivel de Catequesis</label>
+            <select name="id_nivel" required>
+                <option value="">Seleccione un nivel</option>
+                {% for nivel in niveles %}
+                <option value="{{ nivel.Id_Nivel }}">Nivel {{ nivel.Id_Nivel }} - {{ nivel.Parroquia_Bautismo }} ({{ nivel.Horario }})</option>
+                {% endfor %}
+            </select>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" required>
+
+            <label for="cedula">Número de Identificación</label>
+            <input type="text" name="cedula" required>
+
+            <label for="domicilio">Domicilio</label>
+            <input type="text" name="domicilio" required>
+
+            <label for="id_parroquia">Parroquia de Bautismo</label>
+            <select name="id_parroquia" required>
+                <option value="">Seleccione una parroquia</option>
+                {% for parroquia in parroquias %}
+                <option value="{{ parroquia.Id_Parroquia }}">{{ parroquia.Nombre_Parroquia }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="horario">Horario</label>
+            <input type="text" name="horario" required>
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>
